@@ -1,39 +1,36 @@
-# 🕰️ Time Series and Forecasting 🌈
+# 🧪 Time Series Analysis Lab Observations
 
-![Banner](https://via.placeholder.com/1500x500.png/FFA07A/000000?text=📈+Time+Series+Magic+✨+📉+🔮)
+**Course:** Advanced Data Analysis & Forecasting  
+**Department:** Computer Science & Engineering  
+**Academic Year:** 2023-2024  
+**Submitted By:** [Your Name]  
+**Roll No:** [Your Roll Number]  
 
-<div align="center">
+![Lab Workflow](https://via.placeholder.com/800x200.png/0D1117/FFFFFF?text=Time+Series+Analysis+Workflow%3A+Data+Preparation→Feature+Engineering→Model+Training→Forecasting)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![Open in Colab](https://img.shields.io/badge/Open%20in-Colab-orange.svg)](https://colab.research.google.com)
+## 📌 Aim
+To implement and analyze various time series forecasting techniques while understanding their practical applications and limitations.
 
-</div>
+## 🎯 Objectives
+1. Implement data preprocessing techniques for temporal data
+2. Analyze stationarity and trends in time series
+3. Compare traditional statistical vs machine learning approaches
+4. Evaluate model performance using validation metrics
 
-A rainbow-colored collection of time series analysis techniques and forecasting models! 🚀
+## 🔧 Tools & Technologies
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Pandas](https://img.shields.io/badge/Pandas-2.0.3-red)
+![Statsmodels](https://img.shields.io/badge/Statsmodels-0.14.0-green)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13.0-orange)
 
-## 🌟 Features
+## 📋 Implementation Details
 
-| Category              | Implementations                                                                 |
-|-----------------------|---------------------------------------------------------------------------------|
-| **📥 Data Preparation**  | Missing value imputation, Outlier detection, Smoothing, Seasonal decomposition |
-| **📊 Visualization**     | Interactive plots, Trend analysis, Seasonality heatmaps                        |
-| **🔧 Statistical Tests** | ADF test, KPSS test, Seasonal decomposition                                    |
-| **🤖 Models**            | ARIMA, LSTM, VAR, Linear Regression, Moving Average                            |
+### 1. Data Preparation & Cleaning
+```python
+# Handle missing values using forward fill
+df.fillna(method='ffill', inplace=True)
 
-## 🎨 Colorful Features
-
-- 🧹 **Data Cleaning**: Automated missing value handling with multiple strategies
-- 📉 **Trend Detection**: Rolling window visualizations with 3D plots
-- 🌐 **Multi-model Support**: From classical stats to deep learning
-- 📈 **Interactive Dashboard**: Streamlit-based visualization interface (WIP)
-
-## 🛠️ Installation
-
-```bash
-# Clone with style! 🌈
-git clone https://github.com/yourusername/time-series-rainbow.git
-cd time-series-rainbow
-
-# Install dependencies
-pip install -r requirements.txt
+# Remove outliers using IQR
+Q1 = df['value'].quantile(0.25)
+Q3 = df['value'].quantile(0.75)
+df = df[(df['value'] > (Q1 - 1.5*(Q3-Q1))) & (df['value'] < (Q3 + 1.5*(Q3-Q1)))]
